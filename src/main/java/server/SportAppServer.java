@@ -28,6 +28,10 @@ public class SportAppServer {
                         case signon:
                             SignonHandler signonHandler = new SignonHandler();
                             return signonHandler.handle(req.ip(), json);
+                        case signoff:
+                            SignoffHandler signoffHandler = new SignoffHandler();
+                            return signoffHandler.handle(req.ip(), json);
+
                         case grouplist:
                             GrouplistHandler grouplistHandler = new GrouplistHandler();
                             return grouplistHandler.handle(json);
