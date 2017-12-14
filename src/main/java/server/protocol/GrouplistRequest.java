@@ -1,10 +1,12 @@
 package server.protocol;
 
-public class SingoffRequest {
+public class GrouplistRequest {
     private int station;
 
-    public SingoffRequest(int station) {
+
+    public GrouplistRequest(int station) {
         this.station = station;
+
     }
 
     public int getStation() {
