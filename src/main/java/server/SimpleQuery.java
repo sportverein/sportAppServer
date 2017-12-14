@@ -9,10 +9,8 @@ public class SimpleQuery {
 
     public static void main(String[] args) {
 
-       SimpleQuery.signon("10.10.10.10", 2);
+       SimpleQuery.signoff("10.10.10.11", 3);
     }
-
-
 
         // Verbindungs-daten
     final static String hostname = "localhost";
@@ -24,23 +22,8 @@ public class SimpleQuery {
     static Connection conn = null;
     int i = 0;
 
-
-
-
-
-    public SimpleQuery()
+        public static void connect()
         {
-
-
-
-        }
-
-public static boolean signon (String ip, int Station)
-
-        {
-
-            {
-
 
                 try {
                     Class.forName("org.gjt.mm.mysql.Driver").newInstance(); //Treiber laden
@@ -50,10 +33,16 @@ public static boolean signon (String ip, int Station)
                     e.printStackTrace();
                 }
 
-            }
 
-        try {
-        //Verbindung aufbauen
+        }
+
+public static boolean signon (String ip, int Station)
+
+        {
+            connect();
+
+         try {                      //Verbindung aufbauen
+
         String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
         conn = DriverManager.getConnection(url, user, password);
         //Datenübermittlung
@@ -75,9 +64,38 @@ public static boolean signon (String ip, int Station)
         }
 
         return true;
-
         }
 
 
 
-}
+public  static boolean signoff (String ip, int Station)
+
+        {
+        connect();
+
+        try {                      //Verbindung aufbauen
+
+        String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
+        conn = DriverManager.getConnection(url, user, password);
+        //Datenübermittlung
+        Statement stmt = conn.createStatement(); //Statement beginnt
+        //Abfrage beginnen
+        String sqlCommand = "UPDATE station SET IP = '' " + " WHERE Nr = " +Station+ " AND IP = '"+ ip + "';";
+        stmt.executeUpdate(sqlCommand);
+
+        stmt.close(); //Statement beenden
+        conn.close(); // Datenbank-Verbindung beenden
+        }
+        catch (SQLException sqle) {
+        System.out.println("SQLException: " + sqle.getMessage());
+        System.out.println("SQLState: " + sqle.getSQLState());
+        System.out.println("VendorError: " + sqle.getErrorCode());
+        sqle.printStackTrace();
+
+        return false;
+        }
+
+        return true;
+        } //Ende Signoff
+
+} //Ende Klasse
