@@ -9,7 +9,6 @@ public class SignonHandler extends BaseHandler {
 
         SignonRequest signonRequest = (SignonRequest)deserialize(json, SignonRequest.class);
 
-
         boolean success = SimpleQuery.signon(ip, signonRequest.getStation());
         String message = "";
 
