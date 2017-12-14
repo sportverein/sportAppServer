@@ -1,6 +1,7 @@
 package server;
 
 import server.handler.GrouplistHandler;
+import server.handler.SignoffHandler;
 import server.handler.SignonHandler;
 import server.protocol.Command;
 import spark.Spark;
