@@ -9,15 +9,15 @@ public class SimpleQuery {
 
     public static void main(String[] args) {
 
-       SimpleQuery.signoff("10.10.10.11", 3);
+       SimpleQuery.signoff("10.10.10.10", 2);
     }
 
         // Verbindungs-daten
-    final static String hostname = "localhost";
+    final static String hostname = "kmint.de";
     final static String port = "3306";
-    final static String dbname = "sportapp";
-    final static String user = "boss";
-    final static String password = "";
+    final static String dbname = "d028be11";
+    final static String user = "d028be11";
+    final static String password = "alp-dillingen17";
 
     static Connection conn = null;
     int i = 0;
@@ -70,32 +70,62 @@ public static boolean signon (String ip, int Station)
 
 public  static boolean signoff (String ip, int Station)
 
-        {
+    {
         connect();
 
         try {                      //Verbindung aufbauen
 
-        String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
-        conn = DriverManager.getConnection(url, user, password);
-        //Datenübermittlung
-        Statement stmt = conn.createStatement(); //Statement beginnt
-        //Abfrage beginnen
-        String sqlCommand = "UPDATE station SET IP = '' " + " WHERE Nr = " +Station+ " AND IP = '"+ ip + "';";
-        stmt.executeUpdate(sqlCommand);
+            String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
+            conn = DriverManager.getConnection(url, user, password);
+            //Datenübermittlung
+            Statement stmt = conn.createStatement(); //Statement beginnt
+            //Abfrage beginnen
+            String sqlCommand = "UPDATE station SET IP = '' " + " WHERE Nr = " +Station+ " AND IP = '"+ ip + "';";
+            stmt.executeUpdate(sqlCommand);
 
-        stmt.close(); //Statement beenden
-        conn.close(); // Datenbank-Verbindung beenden
+            stmt.close(); //Statement beenden
+            conn.close(); // Datenbank-Verbindung beenden
         }
         catch (SQLException sqle) {
-        System.out.println("SQLException: " + sqle.getMessage());
-        System.out.println("SQLState: " + sqle.getSQLState());
-        System.out.println("VendorError: " + sqle.getErrorCode());
-        sqle.printStackTrace();
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+            sqle.printStackTrace();
 
-        return false;
+            return false;
         }
 
         return true;
-        } //Ende Signoff
+    } //Ende Signoff
+
+    public  static boolean Delivery (String ip, int Station)
+
+    {
+        connect();
+
+        try {                      //Verbindung aufbauen
+
+            String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
+            conn = DriverManager.getConnection(url, user, password);
+            //Datenübermittlung
+            Statement stmt = conn.createStatement(); //Statement beginnt
+            //Abfrage beginnen
+            String sqlCommand = "UPDATE station SET IP = '' " + " WHERE Nr = " +Station+ " AND IP = '"+ ip + "';";
+            stmt.executeUpdate(sqlCommand);
+
+            stmt.close(); //Statement beenden
+            conn.close(); // Datenbank-Verbindung beenden
+        }
+        catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+            sqle.printStackTrace();
+
+            return false;
+        }
+
+        return true;
+    } //Ende Signoff
 
 } //Ende Klasse
