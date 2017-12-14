@@ -6,13 +6,7 @@ import java.sql.*;
 
 public class SimpleQuery {
 
-
-    public static void main(String[] args) {
-
-       SimpleQuery.signoff("10.10.10.10", 2);
-    }
-
-        // Verbindungs-daten
+    // Verbindungs-daten
     final static String hostname = "kmint.de";
     final static String port = "3306";
     final static String dbname = "d028be11";
@@ -22,53 +16,49 @@ public class SimpleQuery {
     static Connection conn = null;
     int i = 0;
 
-        public static void connect()
-        {
-
-                try {
-                    Class.forName("org.gjt.mm.mysql.Driver").newInstance(); //Treiber laden
-                }
-                catch (Exception e) {
-                    System.err.println("Unable to load driver.");
-                    e.printStackTrace();
-                }
-
-
+    public static void connect() {
+        try {
+            Class.forName("org.gjt.mm.mysql.Driver").newInstance(); //Treiber laden
+        }
+        catch (Exception e) {
+            System.err.println("Unable to load driver.");
+            e.printStackTrace();
         }
 
-public static boolean signon (String ip, int Station)
 
-        {
-            connect();
+    }
 
-         try {                      //Verbindung aufbauen
+    public static boolean signon (String ip, int Station) {
+        connect();
 
-        String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
-        conn = DriverManager.getConnection(url, user, password);
-        //Datenübermittlung
-        Statement stmt = conn.createStatement(); //Statement beginnt
-        //Abfrage beginnen
-        String sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+";";
-        stmt.executeUpdate(sqlCommand);
+        try {                      //Verbindung aufbauen
 
-        stmt.close(); //Statement beenden
-        conn.close(); // Datenbank-Verbindung beenden
+            String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
+            conn = DriverManager.getConnection(url, user, password);
+            //Datenübermittlung
+            Statement stmt = conn.createStatement(); //Statement beginnt
+            //Abfrage beginnen
+            String sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+";";
+            stmt.executeUpdate(sqlCommand);
+
+            stmt.close(); //Statement beenden
+            conn.close(); // Datenbank-Verbindung beenden
         }
         catch (SQLException sqle) {
-        System.out.println("SQLException: " + sqle.getMessage());
-        System.out.println("SQLState: " + sqle.getSQLState());
-        System.out.println("VendorError: " + sqle.getErrorCode());
-        sqle.printStackTrace();
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+            sqle.printStackTrace();
 
-        return false;
+            return false;
         }
 
         return true;
-        }
+    }
 
 
 
-public  static boolean signoff (String ip, int Station)
+    public  static boolean signoff (String ip, int Station)
 
     {
         connect();

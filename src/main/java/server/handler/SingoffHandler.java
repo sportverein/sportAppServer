@@ -1,7 +1,5 @@
 package server.handler;
 
-import server.SimpleQuery;
-import server.protocol.SignoffResponse;
 import server.protocol.SignonRequest;
 
 public class SingoffHandler extends BaseHandler {
