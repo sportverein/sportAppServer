@@ -155,7 +155,7 @@ public  static boolean signoff (String ip, int Station)
 
             String sqlCommand = "SELECT Name FROM klassen WHERE Name NOT IN (SELECT Klasse FROM klasse_zu_station WHERE Station = "+ Station + " AND Punkte >= 0);";
 
-            ResultSet rs = stmt.executeQuery(sqlCommand);
+            ResultSet rs =  stmt.executeQuery(sqlCommand);
 
 
             while (rs.next())
