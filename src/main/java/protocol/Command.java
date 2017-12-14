@@ -8,7 +8,7 @@ package protocol;
 public enum Command {
 
     signon("signon"), grouplist("grouplist"), senddata("senddata"), message(
-            "message"), signoff("signoff");
+            "message"), signoff("signoff"), update("update");
 
     private String text;
 

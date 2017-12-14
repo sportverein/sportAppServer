@@ -1,13 +1,11 @@
 package protocol;
 
-import java.util.ArrayList;
-
 public class SenddataResponse {
     private boolean success;
-    private ArrayList<String> schoolClasses;
 
-    public SenddataResponse(boolean success, ArrayList<String> schoolClasses) {
+
+    public SenddataResponse(boolean success) {
         this.success = success;
-        this.schoolClasses = schoolClasses;
+
     }
 }
