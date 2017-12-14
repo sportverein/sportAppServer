@@ -10,8 +10,8 @@ public class SimpleQuery {
 
     public static void main(String[] args) {
 
-        //SimpleQuery.signoff("10.10.10.10", 2);
-        SimpleQuery.signon("10.10.10.10", 2);
+       //SimpleQuery.signoff("10.10.10.10", 2);
+       //SimpleQuery.signon("10.10.10.10", 2);
         //SimpleQuery.delivery("7a",2,3);
        //SimpleQuery.grouplist(2);
     }
@@ -63,15 +63,16 @@ public static boolean signon (String ip, int Station)
                   Check = rs.getString(1);
              }
 
-             if (Check !=ip && Check != "" )
 
+              if (!Check.equals(ip)&& !Check.equals(""))
              {
                  stmt.close(); //Statement beenden
                  conn.close(); // Datenbank-Verbindung beenden
+                 System.out.println(" Kein Login!");
                  return false;
              }
 
-        sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+" AND IP = '';";
+        sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+";";
         stmt.executeUpdate(sqlCommand);
 
         stmt.close(); //Statement beenden
