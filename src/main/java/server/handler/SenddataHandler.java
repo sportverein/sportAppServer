@@ -8,7 +8,7 @@ public class SenddataHandler extends BaseHandler {
    public String handle(String json){
        SenddataRequest senddataRequest = (SenddataRequest) deserialize(json, SenddataRequest.class);
 
-       boolean success = SimpleQuery.delivery(senddataRequest.getSchoolClass(), senddataRequest.getStation(), senddataRequest.getPoints());
+       boolean success = SimpleQuery.delivery(senddataRequest.getSchoolclass(), senddataRequest.getStation(), senddataRequest.getPoints());
 
        SenddataResponse senddataResponse = new SenddataResponse(success);
 

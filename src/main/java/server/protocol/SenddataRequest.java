@@ -2,25 +2,27 @@ package server.protocol;
 
 public class SenddataRequest {
     private int station;
+    private String schoolclass;
     private int points;
-    private String schoolClass;
+
+
+
+    public SenddataRequest(int station, String schoolclass, int points) {
+
+        this.station = station;
+        this.schoolclass = schoolclass;
+        this.points = points;
+    }
 
     public int getStation() {
         return station;
     }
 
+    public String getSchoolclass() {
+        return schoolclass;
+    }
+
     public int getPoints() {
         return points;
-    }
-
-    public String getSchoolClass() {
-        return schoolClass;
-    }
-
-    public SenddataRequest(int station, int points, String schoolClass) {
-
-        this.station = station;
-        this.points = points;
-        this.schoolClass = schoolClass;
     }
 }

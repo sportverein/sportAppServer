@@ -126,7 +126,6 @@ public  static boolean signoff (String ip, int Station)
 
     {
         connect();
-        i++;
         try {                      //Verbindung aufbauen
 
             String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
