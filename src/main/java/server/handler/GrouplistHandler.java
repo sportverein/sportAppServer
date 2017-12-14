@@ -3,8 +3,6 @@ package server.handler;
 import server.SimpleQuery;
 import server.protocol.GrouplistRequest;
 import server.protocol.GrouplistResponse;
-import server.protocol.SignonRequest;
-import server.protocol.SignonResponse;
 
 import java.util.ArrayList;
 
@@ -16,7 +14,9 @@ public class GrouplistHandler extends BaseHandler{
 
         ArrayList<String> grouplist = SimpleQuery.grouplist(grouplistRequest.getStation());
 
-        GrouplistResponse grouplistResponse = new GrouplistResponse(grouplist, true);
+        int progress = SimpleQuery.progress(grouplistRequest.getStation());
+
+        GrouplistResponse grouplistResponse = new GrouplistResponse(grouplist, progress, true);
 
         return serialize(grouplistResponse);
     }
