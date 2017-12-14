@@ -6,7 +6,7 @@ public class SimpleQuery {
 
 
     public static void main(String[] args) {
-       SimpleQuery SQ = new SimpleQuery();
+
        SimpleQuery.signOn("10.10.10.10", 2);
     }
 
@@ -30,19 +30,25 @@ public class SimpleQuery {
         {
 
 
-        try {
-        Class.forName("org.gjt.mm.mysql.Driver").newInstance(); //Treiber laden
-        }
-        catch (Exception e) {
-        System.err.println("Unable to load driver.");
-        e.printStackTrace();
-        }
 
         }
 
 public static boolean signOn (String ip, int Station)
 
         {
+
+            {
+
+
+                try {
+                    Class.forName("org.gjt.mm.mysql.Driver").newInstance(); //Treiber laden
+                }
+                catch (Exception e) {
+                    System.err.println("Unable to load driver.");
+                    e.printStackTrace();
+                }
+
+            }
 
         try {
         //Verbindung aufbauen
