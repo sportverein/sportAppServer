@@ -7,6 +7,9 @@ import spark.Spark;
 public class SportAppServer {
     public static void main(String[] args) {
         Spark.port(Properties.SERVERPORT_SPARK);
+
+        Spark.staticFiles.location("/public");
+
         Spark.post("/sportfest/:command", (req, res) ->
                 {
                     String commandString = req.params(":command");
@@ -32,5 +35,12 @@ public class SportAppServer {
 
                     return "Hello World!";
                 });
+
+        Spark.get("/admin", (req, res)-> {
+            return "<h1>Hier</h1>";
+        });
+
+
+
     }
 }
