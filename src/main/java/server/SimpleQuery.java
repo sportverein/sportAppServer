@@ -11,9 +11,9 @@ public class SimpleQuery {
     public static void main(String[] args) {
 
         //SimpleQuery.signoff("10.10.10.10", 2);
-        //SimpleQuery.signon("10.10.10.10", 2);
+        SimpleQuery.signon("10.10.10.10", 2);
         //SimpleQuery.delivery("7a",2,3);
-        //DruckSimpleQuery.Rest(2);
+       //SimpleQuery.grouplist(2);
     }
 
         // Verbindungs-daten
@@ -55,8 +55,23 @@ public static boolean signon (String ip, int Station)
         //Abfrage beginnen
 
 
+             String sqlCommand = "SELECT IP FROM station WHERE Nr = "+ Station+ ";";
+             ResultSet rs =  stmt.executeQuery(sqlCommand);
 
-             String sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+" AND IP = '';";
+             String Check = "";
+             while (rs.next()) {
+                  Check = rs.getString(1);
+             }
+
+             if (Check !=ip && Check != "" )
+
+             {
+                 stmt.close(); //Statement beenden
+                 conn.close(); // Datenbank-Verbindung beenden
+                 return false;
+             }
+
+        sqlCommand = "UPDATE station SET IP =  '"+ ip + "' WHERE Nr = " +Station+" AND IP = '';";
         stmt.executeUpdate(sqlCommand);
 
         stmt.close(); //Statement beenden
