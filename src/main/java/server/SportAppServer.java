@@ -1,5 +1,7 @@
-import handler.SignonHandler;
-import protocol.Command;
+package server;
+
+import server.handler.SignonHandler;
+import server.protocol.Command;
 import spark.Spark;
 
 public class SportAppServer {

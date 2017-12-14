@@ -1,3 +1,5 @@
+package server;
+
 public class Properties {
 
     public static final String SERVERIP = "http://192.168.2.145";

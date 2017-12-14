@@ -1,3 +1,5 @@
+package server;
+
 import java.sql.*;
 
 // autor: mm-geh
@@ -7,7 +9,7 @@ public class SimpleQuery {
 
     public static void main(String[] args) {
 
-       SimpleQuery.signOn("10.10.10.10", 2);
+       SimpleQuery.signon("10.10.10.10", 2);
     }
 
 
@@ -33,7 +35,7 @@ public class SimpleQuery {
 
         }
 
-public static boolean signOn (String ip, int Station)
+public static boolean signon (String ip, int Station)
 
         {
 

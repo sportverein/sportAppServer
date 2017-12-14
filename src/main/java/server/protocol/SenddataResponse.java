@@ -1,4 +1,4 @@
-package protocol;
+package server.protocol;
 
 public class SenddataResponse {
     private boolean success;

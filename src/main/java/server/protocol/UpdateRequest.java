@@ -1,4 +1,4 @@
-package protocol;
+package server.protocol;
 
 public class UpdateRequest {
     private int station;

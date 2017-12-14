@@ -1,4 +1,4 @@
-package protocol;
+package server.protocol;
 
 /**
  * Created by Teilnehmer on 13.12.2017.

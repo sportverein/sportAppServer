@@ -1,8 +1,7 @@
-package handler;
+package server.handler;
 
-import protocol.SignoffResponse;
-import protocol.SignonRequest;
-import protocol.SignonResponse;
+import server.protocol.SignoffResponse;
+import server.protocol.SignonRequest;
 
 public class SingoffHandler extends BaseHandler {
    public String handle(String ip, String json, ){

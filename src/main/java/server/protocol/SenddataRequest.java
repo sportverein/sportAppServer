@@ -1,4 +1,4 @@
-package protocol;
+package server.protocol;
 
 public class SenddataRequest {
     private int station;

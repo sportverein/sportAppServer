@@ -1,7 +1,8 @@
-package handler;
+package server.handler;
 
-import protocol.SignonRequest;
-import protocol.SignonResponse;
+import server.SimpleQuery;
+import server.protocol.SignonRequest;
+import server.protocol.SignonResponse;
 
 public class SignonHandler extends BaseHandler {
 
