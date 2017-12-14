@@ -4,7 +4,7 @@ import spark.Spark;
 
 public class SportAppServer {
     public static void main(String[] args) {
-        Spark.port(80);
+        Spark.port(Properties.SERVERPORT_SPARK);
         Spark.post("/sportfest/:command", (req, res) ->
                 {
                     String commandString = req.params(":command");

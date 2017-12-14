@@ -5,16 +5,10 @@ package protocol;
  */
 
 public class SignonRequest {
-    private String host;
     private int station;
 
-    public SignonRequest(String host, int station) {
-        this.host = host;
+    public SignonRequest(int station) {
         this.station = station;
-    }
-
-    public String getHost() {
-        return host;
     }
 
     public int getStation() {
