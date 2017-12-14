@@ -1,5 +1,5 @@
 package protocol;
 
-public class SignOffResponse {
+public class SignoffResponse {
     private int station;
 }
