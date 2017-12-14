@@ -213,6 +213,50 @@ public  static boolean signoff (String ip, int Station)
 
     }
 
+        public static int progress (int Station)
+    {
+         int p=0;
+
+        connect();
+
+        String output ="";
+        try {
+            //Verbindung aufbauen
+            String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
+            conn = DriverManager.getConnection(url, user, password);
+            //Datenübermittlung
+            Statement stmt = conn.createStatement(); //Statement beginnt
+            //Abfrage beginnen
+
+            String sqlCommand = "SELECT round(Count(*)*100/ (SELECT Count(*) FROM klassen)) FROM klasse_zu_station WHERE Station = "+Station+";";
+
+            ResultSet rs =  stmt.executeQuery(sqlCommand);
+
+
+            while (rs.next())
+            {
+                p = (rs.getInt(1));
+            }
+
+
+
+            stmt.close(); //Statement beenden
+            conn.close(); // Datenbank-Verbindung beenden
+        }
+        catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+            sqle.printStackTrace();
+
+            return p;
+        }
+
+
+        return p;
+
+    }
+
 
 
 
