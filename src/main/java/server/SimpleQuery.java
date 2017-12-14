@@ -12,7 +12,7 @@ public class SimpleQuery {
 
        //SimpleQuery.signoff("10.10.10.10", 2);
        //SimpleQuery.signon("10.10.10.10", 2);
-        //SimpleQuery.delivery("7a",2,3);
+       // SimpleQuery.delivery("10a",3,6);
        //SimpleQuery.grouplist(2);
     }
 
@@ -25,7 +25,7 @@ public class SimpleQuery {
 
 
     static Connection conn = null;
-    static int i  = 3;
+    static int i  = 0;
 
         public static void connect()
         {
@@ -132,9 +132,19 @@ public  static boolean signoff (String ip, int Station)
             String url = "jdbc:mysql://"+hostname+":"+port+"/"+dbname;
             conn = DriverManager.getConnection(url, user, password);
             //Datenübermittlung
+
             Statement stmt = conn.createStatement(); //Statement beginnt
             //Abfrage beginnen
-            String sqlCommand = "INSERT INTO klasse_zu_station (Klasse,Station,Punkte,ID) VALUES ('"+ Klasse +"',"+Station+","+ Punkte +","+ i +");";
+
+            String sqlCommand = "SELECT Max(ID) FROM klasse_zu_station;";
+            ResultSet rs =  stmt.executeQuery(sqlCommand);
+
+
+            while (rs.next()) {
+                 i = rs.getInt(1)+1;
+            }
+
+            sqlCommand = "INSERT INTO klasse_zu_station (Klasse,Station,Punkte,ID) VALUES ('"+ Klasse +"',"+Station+","+ Punkte +","+ i +");";
             stmt.executeUpdate(sqlCommand);
 
             stmt.close(); //Statement beenden
