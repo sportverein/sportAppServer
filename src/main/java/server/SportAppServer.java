@@ -1,5 +1,6 @@
 package server;
 
+import server.handler.GrouplistHandler;
 import server.handler.SignonHandler;
 import server.protocol.Command;
 import spark.Spark;
@@ -27,7 +28,9 @@ public class SportAppServer {
                         case signon:
                             SignonHandler signonHandler = new SignonHandler();
                             return signonHandler.handle(req.ip(), json);
-
+                        case grouplist:
+                            GrouplistHandler grouplistHandler = new GrouplistHandler();
+                            return grouplistHandler.handle(json);
 
                     }
 

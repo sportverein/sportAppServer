@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class GrouplistHandler extends BaseHandler{
 
-    public String handle(int station, String json){
+    public String handle(String json){
 
         GrouplistRequest grouplistRequest = (GrouplistRequest) deserialize(json, GrouplistRequest.class);
 
