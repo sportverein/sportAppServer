@@ -1,13 +1,13 @@
 package server.protocol;
 
 public class SignoffRequest {
-    private String station;
+    private int station;
 
-    public SignoffRequest(String station) {
+    public SignoffRequest(int station) {
         this.station = station;
     }
 
-    public String getStation() {
+    public int getStation() {
         return station;
     }
 }
