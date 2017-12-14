@@ -1,6 +1,7 @@
 package server;
 
 import server.handler.GrouplistHandler;
+import server.handler.SenddataHandler;
 import server.handler.SignoffHandler;
 import server.handler.SignonHandler;
 import server.protocol.Command;
@@ -36,6 +37,9 @@ public class SportAppServer {
                         case grouplist:
                             GrouplistHandler grouplistHandler = new GrouplistHandler();
                             return grouplistHandler.handle(json);
+                        case senddata:
+                            SenddataHandler senddataHandler = new SenddataHandler();
+                            return senddataHandler.handle(json);
 
                     }
 
